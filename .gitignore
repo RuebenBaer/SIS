@@ -1,0 +1,8 @@
+*.o
+*.res
+*.bak
+*.log
+*.cfg
+*.layout
+*.depend
+*.cbp

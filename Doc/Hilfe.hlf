@@ -1,0 +1,148 @@
+﻿Stereogramme erstellen
+
+Einführung
+Der "Stereogramm Master 2000" erstellt SIS (Single Image Stereogram) - Einzelbildstereogramme - aus einer, vom Benutzer zu ladenden Höhenkarte und einer Textur. Als Höhenkarte kann jedes Pixelbild verwendet werden. Die Farbwerte der einzelnen Pixel werden als Höheninformation interpretiert, bei Werten zwischen 0 und 255 ist 0 am weitesten vom Betrachter entfernt und 255 am nahsten. Die Bilder werden programmintern im RGB Format geladen, evtl. vorhandene Informationen im ALpha-Kanal bleiben unberücksichtigt. Die Berechnung des SIS erfolgt dann für jedes Pixel der Textur nur mit dem roten ("R"GB) Teilpixel der Höhenkarte. Sinnvoll lassen sich als Höhenkarte daher nur Bilder einsetzen, die nur Grautöne enthalten. Schwarze Höhenkartenbereiche befinden sich im Stereogramm im Hintergrund, Weiße soweit vorne, wie dies der Nutzer eingestellt hat.
+
+
+╔══════════════════════════════╗
+║ Erstellen eines Stereogramms ║
+╚══════════════════════════════╝
+
+┌─────────────────────┐
+│ Öffnen einer Textur │
+└─────────────────────┘
+Man kann Bilddateien laden oder sich (pseudo-)zufällige Texturen vom Programm erzeugen lassen die zur Texturierung des SIS verwendet werden.
+Zur Zeit können die Zufallstexturen als Graustufen oder farbige Bilder erzeugt werdem, bei denen jedes Pixel (mehr oder weniger) zufällig eingefärbt wird, ohne Bezug zu den umgebenden Pixeln. 
+
+Menuleiste: Datei->Textur->Textur laden (Bilddatei)
+
+Der Dateibrowser öffnet sich, mit dem die gewünschte Bilddatei gesucht und markiert werden kann.
+Das Öffnen erfolgt durch betätigen der OK-Knopfes (rechts unten). Unterstützt werden momentan png-Dateien und jpg-Dateien.
+
+oder
+
+Menuleiste: Datei->Textur->Bunte Zufallstextur
+
+Das Programm erstellt eine (pseudo-)zufällige, bunte Textur.
+
+oder
+
+Menuleiste: Datei->Textur->Graue Zufallstextur
+
+Das Programm erstellt eine (pseudo-)zufällige, graue Textur.
+
+┌─────────────────────────┐
+│ Öffnen einer Höhenkarte │
+└─────────────────────────┘
+Menuleiste: Datei->Höhenkarte laden
+
+Bilddatei mit dem Dateibrowser suchen und markieren,
+Das Öffnen erfolgt durch betätigen der OK-Knopfes (rechts unten). Unterstützt werden momentan png-Dateien und jpg-Dateien.
+
+┌──────────────────┐
+│ Anzeigen des SIS │
+└──────────────────┘
+Menuleiste: Bearbeiten->SIS anzeigen
+
+Der Befehl öffnet das Anzeigefenster (siehe unten) und erzeugt das Stereogramm gemäß den aktuellen Einstellungen und mit den momentan geladenen Bildern.
+Es wird das letzte erfolgreich erstellte Stereogramm angezeigt.
+
+
+╔══════════════════════════════╗
+║ Veränderung des Stereogramms ║
+╚══════════════════════════════╝
+
+┌────────────────────┐
+│Anpassen der Textur │
+└────────────────────┘
+Die Textur kann verschoben und skaliert werden. Dies erfolgt relativ zur Höhenkarte. Die Textur wird beim Erzeugen des Stereogramms mit seiner aktuellen Position auf das Stereogramm gelegt und wenn nötig in allen Richtungen bis zu den Rändern wiederholt aufgebracht.
+
+Die aktuellen Werte des Verschubs und der Skalierung (TexturZoom) werden in den Statusleisten angezeigt.
+
+
+Das Verschieben der Textur kann auf zwei Wegen erfolgen:
+
+(1)
+Betätigen der linken Maustasten, während sich die Spitze des Mauszeigers (kleiner weißer Pfeil, der nach links oben zeigt, dessen Position auf dem Bildschirm sich durch Verschieben der Maus - sofern vorhanden - manipulieren läßt) innerhalb des Fensters befindet. Durch Bewegen der Maus läßt sich das Bild verschieben. Die linke Maustaste ist solange gedrückt zu halten, bis die gewünschte Position der Textur relativ zur Höhenkarte erreicht wurde.
+
+(2)
+Betätigen einer der vier Pfeiltasten verschiebt die Textur bei einmaligem, kurzen Drücken um ein Pixel in Pfeilrichtung. Hält man die Pfeiltaste gedrückt, wird die Textur wiederholt um ein Pixel in die entsprechende Richtung verschoben, bis die Taste losgelassen wird. Das gleichzeitig gedrückt halten der UMSCHALTEN-Taste verzehnfacht den Verschub.
+
+
+Skalieren der Textur (Größenänderung relativ zur Höhenkarte):
+
+Menuleiste: Bearbeiten->Textur zoomen
+
+Vorgenannter Befehl schaltet das skalieren der Textur frei. Durch drücken der Steuerungstaste wird das zoomen aktiviert. Der Zoomfaktor kann dann auf zwei Wegen eingestellt werden:
+
+(1)
+Drehen des Mausrades von sich weg vergrößert den Zoomfaktor um ein Prozent (0,01), eine Drehung auf sich zu verringert den Zoomfaktor um ein Prozent.
+
+(2)
+Betätigen der '+'-Taste vergrößert den Zoomfaktor um ein Prozent (0,01).
+Betätigen der '-'-Taste verringert den Zoomfaktor um ein Prozent (0,01).
+Das gleichzeitig gedrückt halten der UMSCHALTEN-Taste verzehnfacht die Vergrößerung des Zoomfaktors.
+
+
+Die Änderungen werden bei angezeigtem Stereogramm direkt angewendet.
+
+
+┌─────────────────────────────────────┐
+│ Startpunkt der Berechnung verändern │
+└─────────────────────────────────────┘
+Der Startpunkt der Berechnung befindet sich zu Programmstart am linken Rand der Hoehenkarte, der senkrechte, rote Strich markiert die aktuelle Startposition. Welche Auswirkungen der Verschub hat, kann unter dem Menüpunkt "Theorie der SIS" nachgelesen werden.
+
+Menuleiste: Bearbeiten->Startpunkt verschieben
+
+Vorgenannter Befehl aktiviert die Verschiebung des Startpunktes bzw. das Setzen des Startpunktes.
+
+Nach dem Betätigen und Loslassen der linken Maustaste wird der Startpunkt auf den Punkt der letzten Position des Mauszeigers gesetzt. Befindet sich diese Position recht oder links von der Höhenkarte, wird der Startpunkt auf den, der letzten Mausposition nächsten Rand der Höhenkarte festgelegt.
+
+Die Änderung wird bei angezeigtem Stereogramm direkt angewendet.
+
+
+┌────────────────────────────┐
+│ Textur mehrfach aufbringen │
+└────────────────────────────┘
+Menuleiste: Bearbeiten->Mehrfach texturieren
+
+Beim mehrfachen Aufbringen der Textur werden nacheinander mehrere Stereogramme generiert. Der Startpunkt wird bei jeder neuen Berechnung um den aktuellen "Verschub"-Wert weiter nach rechts geschoben. Zum Schluss werden alle erzeugten Stereogramme übereinandergeblendet.
+So kann die ganze Textur verwendet werden, auch wenn diese Breiter als der aktuelle Verschub ist.
+
+╔════════════════════════╗
+║ Einstellbare Parameter ║
+╚════════════════════════╝
+Im folgenden werden alle einstellbaren Parameter (Textfelder am linken Fensterrand) aufgelistet und kurz beschrieben.
+
+┌──────────────┐
+│ Augenabstand │
+└──────────────┘
+Abstand der Augen, bei durchschnittlicher Anatomie ziehmlich genau 6 cm.
+
+┌───────────┐
+│ Auflösung │
+└───────────┘
+Dieser Parameter dient der Umrechnung von "Augenabstand", "Entfernung Bild" und "Verschub" von realen [cm] in virtuelle [pixel] Längeneinheiten. Die Berechnung erfolgt programmintern in der Einheit "pixel". Die Einstellung richtet sich nach der geplanten Ausgabe des Stereogramms, z. B. 300 dpi für das Drucken eines 3000 pixel breiten Bildes auf einer Breite von ca. 25 cm (10 Inch)
+
+┌─────────────────┐
+│ Entfernung Bild │
+└─────────────────┘
+Betrachtungsabstand des SIS in [cm] (Entfernung des Bildes zu den verwendeten Augen).
+
+┌──────────┐
+│ Verschub │
+└──────────┘
+Bei der Berechnung des SIS werden die schwarzen Pixel der Höhenkarte um den hier angegebenen Wert verschoben (näheres hierzu in der "Theorie der SIS"). Werte kleiner als "Augenabstand" erzeugen ein Stereogramm zur Betrachtung mit dem Parallelblick, größere zur Betrachtung mit dem Kreuzblick.
+
+┌─────────────┐
+│ Höhenfaktor │
+└─────────────┘
+Relative Höhe der weißen Pixel in der Höhenkarte. Bei der Berechnung entsprechen 100% der Bildtiefe des Stereogramms (näheres hierzu in der "Theorie der SIS").
+
+
+Änderungen der vorgestellten Parameter werden bei angezeigtem Stereogramm unmittelbar angewendet.
+
+Um ein "gutes" Stereogramm zu erzeugen wird es notwendig sein, verschiedene Einstellungskombinationen auszuprobieren. Um sich mit den Parametern vertraut zu machen empfiehlt es sich die einzelnen Einstellungen systematisch zu verändern, um ein Gefühl für die Auswirkungen auf das Ergebnis zu bekommen.
+
+
+Viel Vergnügen

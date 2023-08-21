@@ -1,0 +1,3 @@
+AppIcon ICON "Bilder/SISsy.ico"
+
+#include "wx/msw/wx.rc"
